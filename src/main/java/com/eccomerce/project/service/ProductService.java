@@ -1,6 +1,5 @@
 package com.eccomerce.project.service;
 
-import com.eccomerce.project.model.Product;
 import com.eccomerce.project.payload.ProductDTO;
 import com.eccomerce.project.payload.ProductResponse;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,11 +12,11 @@ public interface ProductService {
 
     ProductDTO addProduct(Long categoryId, ProductDTO productDTO);
 
-    ProductResponse getAllProducts();
+    ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
 
-    ProductResponse searchByCategory(Long categoryId);
+    ProductResponse searchByCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
 
-    ProductResponse searchProductByKeyword(String keyword);
+    ProductResponse searchProductByKeyword(String keyword, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
 
     ProductDTO deleteProduct(Long productId);
 
