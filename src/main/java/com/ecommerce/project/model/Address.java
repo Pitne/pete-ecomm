@@ -43,9 +43,9 @@ public class Address {
     @Size(min = 4, message = "Postal code  must contain at least 4 characters")
     private String postalCode;
 
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "addresses")
-    private List<User> users = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Address(String street, String buildingName, String cityName, String state, String country, String postalCode) {
         this.street = street;
