@@ -27,12 +27,11 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public AddressDTO createAddress(AddressDTO addressDTO, User user) {
         Address address = modelMapper.map(addressDTO, Address.class);
-        List<Address> addressList = user.getAddresses();
-        addressList.add(address);
-        user.setAddresses(addressList);
         address.setUser(user);
+        List<Address> addressesList = user.getAddresses();
+        addressesList.add(address);
+        user.setAddresses(addressesList);
         Address savedAddress = addressRepository.save(address);
-
         return modelMapper.map(savedAddress, AddressDTO.class);
     }
 
